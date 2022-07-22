@@ -5,25 +5,87 @@ import static org.junit.jupiter.api.Assertions.*;
 class FolderTest {
     Folder folderOne;
     Folder folderTwo;
+    MyFile fileOne;
+    MyFile fileTwo;
 
     @BeforeEach
     void setUp() {
+        fileOne = new MyFile("File One", "Content One");
+        fileTwo = new MyFile("File Two", "Content Two");
         folderOne = new Folder("Folder One");
         folderTwo = new Folder("Folder Two");
+    }
+
+
+    @Test
+    void testConstructor() {
+        assertEquals("Folder One", folderOne.getName());
+        assertEquals(0, folderOne.getItems().size());
+        assertEquals("Folder Two", folderTwo.getName());
+        assertEquals(0, folderTwo.getItems().size());
+    }
+
+
+    @Test
+    void testGetItemByName() {
+        folderOne.add(fileOne);
+        folderOne.add(fileTwo);
+        assertEquals(fileOne, folderOne.getItemByName("File One"));
+        assertEquals(fileTwo, folderOne.getItemByName("File Two"));
+    }
+
+    @Test
+    void testGetItems() {
+        folderOne.add(fileOne);
+        folderOne.add(fileTwo);
+        assertEquals(2, folderOne.getItems().size());
     }
 
     @Test
     void testGetName() {
         assertEquals("Folder One", folderOne.getName());
-        assertEquals("Folder Two", folderTwo.getName());
     }
 
     @Test
     void testSetName() {
         folderOne.setName("New Folder One");
-        folderTwo.setName("New Folder Two");
         assertEquals("New Folder One", folderOne.getName());
-        assertEquals("New Folder Two", folderTwo.getName());
+    }
+
+    @Test
+    void testAddItem() {
+        folderOne.add(fileOne);
+        folderOne.add(fileTwo);
+        assertEquals(2, folderOne.getItems().size());
+        assertEquals(fileOne, folderOne.getItemByName("File One"));
+        assertEquals(fileTwo, folderOne.getItemByName("File Two"));
+    }
+
+    @Test
+    void changeDirectory() {
+        folderOne.changeDirectory("I don't exist");
+        assertEquals("Folder One", folderOne.getName());
+
+        folderOne.add(folderTwo);
+        folderOne.changeDirectory("Folder Two");
+        assertEquals("Folder Two", folderOne.getName());
+
+    }
+
+    @Test
+    void testRemove() {
+        folderOne.add(fileOne);
+        folderOne.add(fileTwo);
+        folderOne.remove(fileOne);
+        assertEquals(1, folderOne.getItems().size());
+        assertEquals(fileTwo, folderOne.getItemByName("File Two"));
+    }
+
+    @Test void testDoesNotContainItem() {
+        folderOne.add(fileOne);
+        folderOne.add(fileTwo);
+        assertTrue(folderOne.doesNotContainItem("File Million"));
+        assertFalse(folderOne.doesNotContainItem("File One"));
     }
 
 }

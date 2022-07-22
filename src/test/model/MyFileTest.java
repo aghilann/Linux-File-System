@@ -2,28 +2,28 @@ package model;
 import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class FileTest {
-    File fileOne;
-    File fileTwo;
+public class MyFileTest {
+    MyFile fileOne;
+    MyFile fileTwo;
 
     @BeforeEach
     void setUp() {
-        fileOne = new File("File One", "Content One");
-        fileTwo = new File("File Two", "Content Two");
+        fileOne = new MyFile("MyFile One", "Content One");
+        fileTwo = new MyFile("MyFile Two", "Content Two");
     }
 
     @Test
     void testGetName() {
-        assertEquals("File One", fileOne.getName());
-        assertEquals("File Two", fileTwo.getName());
+        assertEquals("MyFile One", fileOne.getName());
+        assertEquals("MyFile Two", fileTwo.getName());
     }
 
     @Test
     void testSetName() {
-        fileOne.setName("New File One");
-        fileTwo.setName("New File Two");
-        assertEquals("New File One", fileOne.getName());
-        assertEquals("New File Two", fileTwo.getName());
+        fileOne.setName("New MyFile One");
+        fileTwo.setName("New MyFile Two");
+        assertEquals("New MyFile One", fileOne.getName());
+        assertEquals("New MyFile Two", fileTwo.getName());
     }
 
     @Test
