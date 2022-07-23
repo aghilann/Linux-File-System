@@ -47,7 +47,7 @@ public class Folder implements FolderItemInterface {
     }
 
     // MODIFIES: this
-    // EFFECTS: adds the given item to the current folder
+    // EFFECTS: adds the given item to the current folder, true if successful, false if not
     public boolean add(FolderItemInterface item) {
         if (item instanceof Folder && doesNotContainItem(item.getName())) {
             Folder folderToAdd = (Folder) item;
