@@ -32,6 +32,7 @@ class FolderTest {
         folderOne.add(fileTwo);
         assertEquals(fileOne, folderOne.getItemByName("File One"));
         assertEquals(fileTwo, folderOne.getItemByName("File Two"));
+        assertNull(folderOne.getItemByName("File Three which doesnt exist"));
     }
 
     @Test
@@ -54,8 +55,11 @@ class FolderTest {
 
     @Test
     void testAddItem() {
-        folderOne.add(fileOne);
-        folderOne.add(fileTwo);
+        assertTrue(folderOne.add(fileOne));
+        assertFalse(folderOne.add(fileOne));
+        assertTrue(folderOne.add(fileTwo));
+        assertFalse(folderOne.add(fileTwo));
+
         assertEquals(2, folderOne.getItems().size());
         assertEquals(fileOne, folderOne.getItemByName("File One"));
         assertEquals(fileTwo, folderOne.getItemByName("File Two"));
@@ -64,11 +68,14 @@ class FolderTest {
     @Test
     void changeDirectory() {
         folderOne.changeDirectory("I don't exist");
+        folderOne.changeDirectory("Folder Two");
+        assertEquals(0, folderOne.getItems().size());
         assertEquals("Folder One", folderOne.getName());
-
         folderOne.add(folderTwo);
         folderOne.changeDirectory("Folder Two");
         assertEquals("Folder Two", folderOne.getName());
+        assertEquals(0, folderOne.getItems().size());
+        assertEquals(folderTwo.getItems(), folderOne.getItems());
 
     }
 

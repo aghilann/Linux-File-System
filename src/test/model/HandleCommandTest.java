@@ -39,12 +39,20 @@ public class HandleCommandTest {
     public void testHandleList() {
         String itemName = "ls";
         HandleCommand.handleCommand(itemName, folderOne);
-        // TODO: How do you test this? It should print out the names of the items in the folder.
+        assertEquals(0, folderOne.getItems().size());
+        folderOne.add(fileOne);
+        folderOne.add(fileTwo);
+        HandleCommand.handleCommand(itemName, folderOne);
+        assertEquals(2, folderOne.getItems().size());
     }
 
     @Test
     public void testHandleChangeDirectory() {
         String itemName = "cd newFolder";
+        HandleCommand.handleCommand(itemName, folderOne);
+        assertEquals(0, folderOne.getItems().size());
+
+        itemName = "cd MyFile One";
         HandleCommand.handleCommand(itemName, folderOne);
         assertEquals(0, folderOne.getItems().size());
 

@@ -48,15 +48,18 @@ public class Folder implements FolderItemInterface {
 
     // MODIFIES: this
     // EFFECTS: adds the given item to the current folder
-    public void add(FolderItemInterface item) {
+    public boolean add(FolderItemInterface item) {
         if (item instanceof Folder && doesNotContainItem(item.getName())) {
             Folder folderToAdd = (Folder) item;
             this.items.add(folderToAdd);
+            return true;
         } else if ((item instanceof MyFile) && doesNotContainItem(item.getName())) {
             MyFile fileToAdd = (MyFile) item;
             this.items.add(fileToAdd);
+            return true;
         } else {
             App.printGivenString("Item already exists in this folder");
+            return false;
         }
     }
 
