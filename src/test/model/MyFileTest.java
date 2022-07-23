@@ -13,6 +13,14 @@ public class MyFileTest {
     }
 
     @Test
+    void testConstructor() {
+        assertEquals("MyFile One", fileOne.getName());
+        assertEquals("Content One", fileOne.getContent());
+        assertEquals("MyFile Two", fileTwo.getName());
+        assertEquals("Content Two", fileTwo.getContent());
+    }
+
+    @Test
     void testGetName() {
         assertEquals("MyFile One", fileOne.getName());
         assertEquals("MyFile Two", fileTwo.getName());

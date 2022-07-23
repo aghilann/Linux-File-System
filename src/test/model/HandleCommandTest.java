@@ -18,9 +18,6 @@ public class HandleCommandTest {
         fileOne = new MyFile("MyFile One", "Content One");
         fileTwo = new MyFile("MyFile Two", "Content Two");
     }
-
-    // TEST all the private methods called by handleCommand()
-
     @Test
     public void testHandleMakeDirectory() {
         String itemName = "mkdir newFolder";
@@ -42,7 +39,7 @@ public class HandleCommandTest {
     public void testHandleList() {
         String itemName = "ls";
         HandleCommand.handleCommand(itemName, folderOne);
-        // TODO: How do you test this?
+        // TODO: How do you test this? It should print out the names of the items in the folder.
     }
 
     @Test
@@ -59,6 +56,25 @@ public class HandleCommandTest {
         assertEquals(2, folderTwo.getItems().size());
         assertEquals(fileOne, folderTwo.getItemByName("MyFile One"));
         assertEquals(fileTwo, folderTwo.getItemByName("MyFile Two"));
+    }
+
+    @Test
+    public void testHandleRemove() {
+        String itemName = "rm newFolder";
+        HandleCommand.handleCommand(itemName, folderOne);
+        assertEquals(0, folderOne.getItems().size());
+
+        folderOne.add(fileOne);
+        itemName = "rm MyFile One";
+        HandleCommand.handleCommand(itemName, folderOne);
+        assertEquals(0, folderOne.getItems().size());
+
+        itemName = "rm folderTwo";
+        folderOne.add(fileOne);
+        folderOne.add(fileTwo);
+        folderOne.add(folderTwo);
+        HandleCommand.handleCommand(itemName, folderOne);
+        assertEquals(2, folderOne.getItems().size());
     }
 
 

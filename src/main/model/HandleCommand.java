@@ -1,5 +1,7 @@
 package model;
 
+import ui.App;
+
 public class HandleCommand {
 
     // REQUIRES: command is not an empty string
@@ -17,7 +19,7 @@ public class HandleCommand {
         } else if (command.startsWith("rm")) {
             handleRemove(command, currentDirectory);
         } else {
-            System.out.println("Invalid command");
+            App.printGivenString("Invalid command");
         }
     }
 
@@ -27,10 +29,10 @@ public class HandleCommand {
     private static void handleRemove(String command, Folder currentDirectory) {
         String itemName = command.substring(3);
         if (currentDirectory.doesNotContainItem(itemName)) {
-            System.out.println("No such file or directory");
+            App.printGivenString("Item does not exist");
         } else {
             currentDirectory.remove(currentDirectory.getItemByName(itemName));
-            System.out.println("Removed " + itemName);
+            App.printGivenString("Removed " + itemName);
         }
     }
 
@@ -46,11 +48,12 @@ public class HandleCommand {
     // MODIFIES: currentDirectory
     // EFFECTS: prints the names of all the files in the current directory
     private static void handleList(Folder currentDirectory) {
-        System.out.println("Listing files");
-        currentDirectory.getItems()
-                .stream()
-                .map(FolderItemInterface::getName)
-                .forEach(System.out::println);
+        App.printGivenString("Listing files");
+
+        for (FolderItemInterface item : currentDirectory.getItems()) {
+            App.printGivenString(item.getName());
+        }
+
     }
 
     // REQUIRES: command after touch is not an empty string
@@ -59,7 +62,7 @@ public class HandleCommand {
     private static void handleTouch(String command, Folder currentDirectory) {
         MyFile newFile = new MyFile(command.substring(6), "");
         currentDirectory.add(newFile);
-        System.out.println("Creating a file named" + command.substring(5));
+        App.printGivenString("Creating a file named" + command.substring(5));
     }
 
     // REQUIRES: command after mkdir is not an empty string
@@ -68,6 +71,6 @@ public class HandleCommand {
     private static void handleMakeDirectory(String command, Folder currentDirectory) {
         Folder newDirectory = new Folder(command.substring(6));
         currentDirectory.add(newDirectory);
-        System.out.println("Creating a folder named" + command.substring(5));
+        App.printGivenString("Creating a folder named" + command.substring(5));
     }
 }

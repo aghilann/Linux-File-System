@@ -1,5 +1,7 @@
 package model;
 
+import ui.App;
+
 import java.util.ArrayList;
 
 public class Folder implements FolderItemInterface {
@@ -9,7 +11,7 @@ public class Folder implements FolderItemInterface {
     // EFFECTS: constructs a new Folder with the given name
     public Folder(String name) {
         this.name = name;
-        this.items = new ArrayList<FolderItemInterface>();
+        this.items = new ArrayList<>();
     }
 
     // EFFECTS: returns the name of this Folder
@@ -33,12 +35,6 @@ public class Folder implements FolderItemInterface {
         return items;
     }
 
-    // MODIFIES: this
-    // EFFECTS: changes the items to the given items
-    private void setItems(ArrayList<FolderItemInterface> items) {
-        this.items = items;
-    }
-
     public void remove(FolderItemInterface item) {
         this.items.remove(item);
     }
@@ -60,7 +56,7 @@ public class Folder implements FolderItemInterface {
             MyFile fileToAdd = (MyFile) item;
             this.items.add(fileToAdd);
         } else {
-            System.out.println("Item already exists in this folder");
+            App.printGivenString("Item already exists in this folder");
         }
     }
 
@@ -74,12 +70,6 @@ public class Folder implements FolderItemInterface {
         return true;
     }
 
-    // EFFECTS: prints the name of all the files in this folder
-    public void listFiles() {
-        for (FolderItemInterface item : this.items) {
-            System.out.println(item.getName());
-        }
-    }
 
     // REQUIRES: name is in this folder
     // MODIFIES: this
@@ -89,14 +79,14 @@ public class Folder implements FolderItemInterface {
             if (item.getName().equals(name)) {
                 if (item instanceof Folder) {
                     changeAllFields((Folder) item);
-                    System.out.println("Changed directory to " + this.getName());
+                    App.printGivenString("Changed directory to " + item.getName());
                 } else {
-                    System.out.println("Cannot change directory to a file");
+                    App.printGivenString("Cannot change directory to a file");
                 }
                 return;
             }
         }
-        System.out.println("Folder does not exist");
+        App.printGivenString("Item does not exist in this folder");
     }
 
     // MODIFIES: this
