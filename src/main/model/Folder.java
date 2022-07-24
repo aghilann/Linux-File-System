@@ -4,6 +4,8 @@ import ui.App;
 
 import java.util.ArrayList;
 
+
+// Folder class with name and children of type Folder and File
 public class Folder implements FolderItemInterface {
     private String name;
     private ArrayList<FolderItemInterface> items;

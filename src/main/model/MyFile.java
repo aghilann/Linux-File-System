@@ -1,6 +1,6 @@
 package model;
 
-
+// File with name and content
 public class MyFile implements FolderItemInterface {
     String name;
     String content;
