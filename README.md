@@ -15,9 +15,17 @@ this project difficult to implement and it will teach me a lot aboout Object Ori
  - Rename files and folders
  - Use common terminal commands like ls, cd, mkdir, rm with the exeption of cd .. which allows the user to go up in the file system.
 
-## User Stories for Phase 0:
+## User Stories for Phase 0 and 1:
 - Create a file within a folder.
 - Create a folder within a folder.
 - Enter into a folder
 - List the folders
 - Remove a file/folder
+
+## Instructions to use Application
+- Assumes basic knowledge of file system and it's command
+- "cd <FolderName>" changes your directory to the directory with the given name if it exists
+- "ls" just prints the names of all the folders/files in the current directory
+- "mkdir <FolderName>" Creates a folder with the given name if it doesnt already exist
+ - "rm" <ItemName> removed item with given name if exists
+ - "touch <FileName> creates a file with given name if it doesnt already exist"
