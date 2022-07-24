@@ -70,7 +70,10 @@ public class HandleCommand {
     // EFFECTS: creates a new folder in the current directory
     private static void handleMakeDirectory(String command, Folder currentDirectory) {
         Folder newDirectory = new Folder(command.substring(6));
-        currentDirectory.add(newDirectory);
-        App.printGivenString("Creating a folder named" + command.substring(5));
+        if (currentDirectory.add(newDirectory)) {
+            App.printGivenString("Creating a folder named" + command.substring(5));
+        } else {
+            App.printGivenString("Folder already exists");
+        }
     }
 }
