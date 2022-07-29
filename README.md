@@ -22,6 +22,11 @@ this project difficult to implement and it will teach me a lot aboout Object Ori
 - List the folders
 - Remove a file/folder
 
+## User Stories for Phase 2:
+- As a user, I want to be able to save my file system.
+- As a user, I want to be able to load my file system.
+
+
 ## Instructions to use Application
 - Assumes basic knowledge of file system and it's command
 - "cd <FolderName>" changes your directory to the directory with the given name if it exists
