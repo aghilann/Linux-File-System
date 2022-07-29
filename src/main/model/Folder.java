@@ -37,6 +37,9 @@ public class Folder implements FolderItemInterface {
         return items;
     }
 
+    // REQUIRES: Item with name in the current directory
+    // MODIFIES: this
+    // EFFECTS: removes the item with the given name from this Folder
     public void remove(FolderItemInterface item) {
         this.items.remove(item);
     }

@@ -3,7 +3,7 @@ package model;
 import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-
+// Contains tests to make sure the user's commands are correctly handled.
 public class HandleCommandTest {
 
     Folder folderOne;

@@ -2,6 +2,7 @@ package model;
 
 import ui.App;
 
+// HandleCommand class to handle the commands from the user.
 public class HandleCommand {
 
     // REQUIRES: command is not an empty string

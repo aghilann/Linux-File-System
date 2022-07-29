@@ -2,6 +2,8 @@ package model;
 import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
 
+
+// Contains tests for the Folder class.
 class FolderTest {
     Folder folderOne;
     Folder folderTwo;
