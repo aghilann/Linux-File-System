@@ -10,10 +10,10 @@ this project difficult to implement and it will teach me a lot aboout Object Ori
 
 
 ## User Features:
- - Create and delete files
- - Create folders which are also allowed to contain folders anf files
- - Rename files and folders
- - Use common terminal commands like ls, cd, mkdir, rm with the exeption of cd .. which allows the user to go up in the file system.
+ - As a User I can create and delete files
+ - As a User I can create folders which are also allowed to contain folders anf files
+ - As a User I can rename files and folders
+ - As a User I can use common terminal commands like ls, cd, mkdir, rm with the exeption of cd .. which allows the user to go up in the file system.
 
 ## User Stories for Phase 0 and 1:
 - Create a file within a folder.
