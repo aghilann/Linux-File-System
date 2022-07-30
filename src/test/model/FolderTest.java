@@ -1,4 +1,5 @@
 package model;
+import org.json.JSONObject;
 import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -105,7 +106,7 @@ class FolderTest {
     void testToJson() {
         folderOne.add(fileOne);
         folderOne.add(fileTwo);
-        assertEquals(folderOne.toJson(folderOne), folderOne.toJson(folderOne));
+        assertTrue(folderOne.toJson(folderOne) instanceof JSONObject);
     }
 }
 
