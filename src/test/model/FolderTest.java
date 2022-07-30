@@ -108,3 +108,8 @@ class FolderTest {
         assertEquals(folderOne.toJson(folderOne), folderOne.toJson(folderOne));
     }
 }
+
+
+// Code was copied from the following URL and changed to fit the needs of this project:
+// https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
+// /blob/master/src/main/model/WorkRoom.java

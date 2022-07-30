@@ -2,7 +2,7 @@
   "name":"root",
   "items":[
     {
-      "name":"f1",
+      "name":"File One",
       "content":"SOME CONTENT",
       "type":"file"
     }

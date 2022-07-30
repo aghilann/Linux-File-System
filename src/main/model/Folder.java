@@ -141,11 +141,10 @@ public class Folder implements FolderItemInterface {
         for (FolderItemInterface item : items) {
             jsonArray.put(toJson(item));
         }
+
         return jsonArray;
     }
 
-
-
-
-
 }
+
+
