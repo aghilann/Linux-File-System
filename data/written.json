@@ -1,0 +1,46 @@
+{
+    "name": "root",
+    "type": "folder",
+    "items": [
+        {
+            "name": "Folder One",
+            "type": "folder",
+            "items": []
+        },
+        {
+            "name": "index.html",
+            "type": "file",
+            "content": ""
+        },
+        {
+            "name": "index.css",
+            "type": "file",
+            "content": ""
+        },
+        {
+            "name": "index.js",
+            "type": "file",
+            "content": ""
+        },
+        {
+            "name": "Component.html",
+            "type": "file",
+            "content": ""
+        },
+        {
+            "name": "Component.css",
+            "type": "file",
+            "content": ""
+        },
+        {
+            "name": "Component.js",
+            "type": "file",
+            "content": ""
+        },
+        {
+            "name": "Subfolder",
+            "type": "folder",
+            "items": []
+        }
+    ]
+}

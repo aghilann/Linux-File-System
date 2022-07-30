@@ -1,0 +1,11 @@
+{
+  "name":"root",
+  "items":[
+    {
+      "name":"f1",
+      "content":"SOME CONTENT",
+      "type":"file"
+    }
+  ],
+  "type":"folder"
+}

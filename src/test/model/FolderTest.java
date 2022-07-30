@@ -97,8 +97,14 @@ class FolderTest {
 
     @Test
     void testCloneDirectory() {
-        assertFalse(folderOne.equals(Folder.cloneDirectory(folderOne)));
-        assertFalse(Folder.cloneDirectory(folderOne).equals(Folder.cloneDirectory(folderOne)));
+        assertNotEquals(folderOne, Folder.cloneDirectory(folderOne));
+        assertNotEquals(Folder.cloneDirectory(folderOne), Folder.cloneDirectory(folderOne));
     }
 
+    @Test
+    void testToJson() {
+        folderOne.add(fileOne);
+        folderOne.add(fileTwo);
+        assertEquals(folderOne.toJson(folderOne), folderOne.toJson(folderOne));
+    }
 }

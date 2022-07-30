@@ -68,7 +68,6 @@ public class JsonReader {
         if (type.equals("folder")) {
             item = new Folder(name);
             currentFolder.add(item);
-            // Add the items and and change the JSON object the subfolder is in
             addItems((Folder) item, (JSONArray) jsonObject.get("items"));
         } else {
             item = new MyFile(name, jsonObject.getString("content"));

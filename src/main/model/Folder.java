@@ -1,5 +1,7 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import ui.App;
 
 
@@ -103,6 +105,7 @@ public class Folder implements FolderItemInterface {
         return currentDirectory;
     }
 
+    // EFFECTS: creates a clone of the directory and it's children
     public static Folder cloneDirectory(Folder folder) {
         Folder newFolder = new Folder(folder.name);
         for (FolderItemInterface item : folder.items) {
@@ -115,9 +118,34 @@ public class Folder implements FolderItemInterface {
         return newFolder;
     }
 
-    public void save(Folder root) {
+    // EFFECTS: returns a JSON representation of this Folder
+    public JSONObject toJson(FolderItemInterface item) {
+        JSONObject json = new JSONObject();
+        if (item instanceof Folder) {
+            json.put("type", "folder");
+            json.put("name", item.getName());
+            json.put("items", itemsToJson(((Folder) item).getItems()));
+        } else {
+            json.put("type", "file");
+            json.put("name", item.getName());
+            json.put("content", ((MyFile) item).getContent());
+        }
+
+        return json;
     }
 
-    public void writeToFile(Folder root) {
+    // EFFECTS: returns a JSON of an array of all the items in this Folder
+    private JSONArray itemsToJson(ArrayList<FolderItemInterface> items) {
+        JSONArray jsonArray = new JSONArray();
+
+        for (FolderItemInterface item : items) {
+            jsonArray.put(toJson(item));
+        }
+        return jsonArray;
     }
+
+
+
+
+
 }

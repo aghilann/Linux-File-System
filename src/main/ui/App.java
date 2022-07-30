@@ -6,6 +6,7 @@ import model.Folder;
 import java.io.IOException;
 import java.util.Scanner;
 import persistence.JsonReader;
+import persistence.JsonWriter;
 
 // Runs program on initialization and contains methods to output to console
 public class App {
@@ -13,26 +14,22 @@ public class App {
     Folder root;
     boolean isRunning = true;
     Scanner terminal = new Scanner(System.in);
-    private static final String JSON_STORE = "./data/fileData.json";
-    private JsonReader jsonReader;
+    private static final String JSON_STORE = "./data/FileSystem.json";
+    private final JsonReader jsonReader;
+    private final JsonWriter jsonWriter;
 
+    // EFFECTS: constructs a new App
     public App() {
         jsonReader = new JsonReader(JSON_STORE);
+        jsonWriter = new JsonWriter(JSON_STORE);
         // Ask the user if they would like to start from a saved state or start from scratch
         System.out.println("Would you like to start from a saved state or start from scratch?");
         System.out.println("1. Start from saved state");
         System.out.println("2. Start from scratch");
         int choice = terminal.nextInt();
         shouldLoad(choice);
-        loadFolder();
         root = currentDirectory;
         runApplication();
-    }
-
-    private void shouldLoad(int choice) {
-        if (choice == 1) {
-            loadFolder();
-        }
     }
 
     // MODIFIES: this
@@ -44,17 +41,13 @@ public class App {
             String command = terminal.nextLine();
             if (command.startsWith("exit")) {
                 isRunning = false;
-                continue;
-            }
-
-            if (!command.equals("")) {
+            } else if (command.startsWith("save")) {
+                saveFolder();
+            } else if (!command.equals("")) {
                 HandleCommand.handleCommand(command, currentDirectory, root);
             }
 
         }
-
-        System.out.println("Would you like to save your changes? (y/n)");
-        String answer = terminal.nextLine();
     }
 
     // EFFECTS: prints the given string to the console
@@ -73,4 +66,23 @@ public class App {
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS: determines if the user wants to start from a saved state or start from scratch
+    private void shouldLoad(int choice) {
+        if (choice == 1) {
+            loadFolder();
+        }
+    }
+
+    // EFFECTS: saves the current folder to file
+    private void saveFolder() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(currentDirectory);
+            jsonWriter.close();
+            System.out.println("Saved " + currentDirectory.getName() + " to " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
+    }
 }
