@@ -1,29 +1,35 @@
 {
-  "name":"root",
-  "items":[
-    {
-      "name":"f1",
-      "content":"SOME CONTENT",
-      "type":"file"
-    },
-    {
-      "name":"f2",
-      "content":"SOME CONTENT AGAIN",
-      "type":"file"
-    },
-    {
-      "name":"f3",
-      "items":[
+    "name": "root",
+    "type": "folder",
+    "items": [
         {
-          "name":"f4",
-          "items":[
-
-          ],
-          "type":"folder"
+            "name": "f1",
+            "type": "file",
+            "content": "SOME CONTENT"
+        },
+        {
+            "name": "f2",
+            "type": "file",
+            "content": "SOME CONTENT AGAIN"
+        },
+        {
+            "name": "f3",
+            "type": "folder",
+            "items": [{
+                "name": "f4",
+                "type": "folder",
+                "items": []
+            }]
+        },
+        {
+            "name": "f4",
+            "type": "folder",
+            "items": []
+        },
+        {
+            "name": "f5",
+            "type": "folder",
+            "items": []
         }
-      ],
-      "type":"folder"
-    }
-  ],
-  "type":"folder"
+    ]
 }

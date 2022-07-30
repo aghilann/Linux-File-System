@@ -84,16 +84,4 @@ public class HandleCommandTest {
         HandleCommand.handleCommand(itemName, folderOne, folderOne);
         assertEquals(2, folderOne.getItems().size());
     }
-
-    @Test
-    public void handlePrintAllTest() {
-        String itemName = "printAll";
-        HandleCommand.handleCommand(itemName, folderOne, folderOne);
-        assertEquals(0, folderOne.getItems().size());
-
-        folderOne.add(fileOne);
-        folderOne.add(fileTwo);
-        HandleCommand.handleCommand(itemName, folderOne, folderOne);
-        assertEquals(2, folderOne.getItems().size());
-    }
 }

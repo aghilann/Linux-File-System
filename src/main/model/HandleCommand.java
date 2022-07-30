@@ -21,8 +21,6 @@ public class HandleCommand {
             currentDirectory = handleChangeDirectory(command, currentDirectory);
         } else if (command.startsWith("rm")) {
             handleRemove(command, currentDirectory);
-        } else if (command.startsWith("all")) {
-            handlePrintAll(root);
         } else {
             App.printGivenString("Invalid command");
         }
@@ -82,16 +80,4 @@ public class HandleCommand {
         }
     }
 
-    // REQUIRES: command after all is not an empty string
-    // EFFECTS: prints all the items in the root folder (not just the current directory)
-    private static void handlePrintAll(Folder head) {
-        App.printGivenString(head.getName());
-        for (FolderItemInterface item : head.getItems()) {
-            if (item instanceof Folder) {
-                handlePrintAll((Folder) item);
-            } else {
-                App.printGivenString(item.getName());
-            }
-        }
-    }
 }

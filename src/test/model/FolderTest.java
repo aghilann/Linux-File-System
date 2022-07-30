@@ -81,6 +81,14 @@ class FolderTest {
     }
 
     @Test
+    void changeDirectory2() {
+        folderOne.add(folderTwo);
+        folderOne.changeDirectory("Folder Two", folderOne);
+        assertEquals("Folder Two", folderTwo.getName());
+        assertEquals(0, folderTwo.getItems().size());
+    }
+
+    @Test
     void testRemove() {
         folderOne.add(fileOne);
         folderOne.add(fileTwo);
@@ -100,6 +108,8 @@ class FolderTest {
     void testCloneDirectory() {
         assertNotEquals(folderOne, Folder.cloneDirectory(folderOne));
         assertNotEquals(Folder.cloneDirectory(folderOne), Folder.cloneDirectory(folderOne));
+        assertEquals(folderOne.getName(), Folder.cloneDirectory(folderOne).getName());
+        assertEquals(folderOne.getItems().size(), Folder.cloneDirectory(folderOne).getItems().size());
     }
 
     @Test
