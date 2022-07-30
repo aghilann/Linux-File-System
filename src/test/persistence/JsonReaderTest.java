@@ -35,7 +35,7 @@ public class JsonReaderTest extends JsonTest{
 
     @Test
     void testReaderGeneralWorkRoom() {
-        JsonReader reader = new JsonReader("./data/testReaderGeneralFolder.json");
+        JsonReader reader = new JsonReader("./data/testReaderWithItems.json");
         try {
             Folder folder = reader.read();
             assertNotNull(folder);

@@ -1,0 +1,27 @@
+{
+    "name": "root",
+    "type": "folder",
+    "items": [
+        {
+            "name": "folderOne",
+            "type": "folder",
+            "items": [
+                {
+                    "name": "fileOne",
+                    "type": "file",
+                    "content": "contentOne"
+                },
+                {
+                    "name": "fileTwo",
+                    "type": "file",
+                    "content": "contentTwo"
+                }
+            ]
+        },
+        {
+            "name": "folderTwo",
+            "type": "folder",
+            "items": []
+        }
+    ]
+}
