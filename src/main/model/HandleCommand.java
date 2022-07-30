@@ -5,10 +5,12 @@ import ui.App;
 // HandleCommand class to handle the commands from the user.
 public class HandleCommand {
 
+
     // REQUIRES: command is not an empty string
     // MODIFIES: currentDirectory
     // EFFECTS: performs the operation given in the command
-    public static void handleCommand(String command, Folder currentDirectory) {
+    public static void handleCommand(String command, Folder currentDirectory, Folder root) {
+
         if (command.startsWith("mkdir")) {
             handleMakeDirectory(command, currentDirectory);
         } else if  (command.startsWith("touch")) {
@@ -16,9 +18,11 @@ public class HandleCommand {
         } else if (command.startsWith("ls")) {
             handleList(currentDirectory);
         } else if (command.startsWith("cd")) {
-            handleChangeDirectory(command, currentDirectory);
+            currentDirectory = handleChangeDirectory(command, currentDirectory);
         } else if (command.startsWith("rm")) {
             handleRemove(command, currentDirectory);
+        } else if (command.startsWith("all")) {
+            handlePrintAll(root);
         } else {
             App.printGivenString("Invalid command");
         }
@@ -40,9 +44,9 @@ public class HandleCommand {
     // REQUIRES: command after cd is not an empty string
     // MODIFIES: currentDirectory
     // EFFECTS: changes the current directory to the given directory
-    private static void handleChangeDirectory(String command, Folder currentDirectory) {
+    private static Folder handleChangeDirectory(String command, Folder currentDirectory) {
         String folderName = command.substring(3);
-        currentDirectory.changeDirectory(folderName);
+        return currentDirectory.changeDirectory(folderName, currentDirectory);
     }
 
     // REQUIRES: command after ls is not an empty string
@@ -75,6 +79,19 @@ public class HandleCommand {
             App.printGivenString("Creating a folder named" + command.substring(5));
         } else {
             App.printGivenString("Folder already exists");
+        }
+    }
+
+    // REQUIRES: command after all is not an empty string
+    // EFFECTS: prints all the items in the root folder (not just the current directory)
+    private static void handlePrintAll(Folder head) {
+        App.printGivenString(head.getName());
+        for (FolderItemInterface item : head.getItems()) {
+            if (item instanceof Folder) {
+                handlePrintAll((Folder) item);
+            } else {
+                App.printGivenString(item.getName());
+            }
         }
     }
 }

@@ -21,7 +21,7 @@ public class HandleCommandTest {
     @Test
     public void testHandleMakeDirectory() {
         String itemName = "mkdir newFolder";
-        HandleCommand.handleCommand(itemName, folderOne);
+        HandleCommand.handleCommand(itemName, folderOne, folderOne);
         assertEquals(1, folderOne.getItems().size());
         assertTrue(folderOne.getItemByName("newFolder") instanceof Folder);
 
@@ -30,7 +30,7 @@ public class HandleCommandTest {
     @Test
     public void testHandleTouch() {
         String itemName = "touch newFile";
-        HandleCommand.handleCommand(itemName, folderOne);
+        HandleCommand.handleCommand(itemName, folderOne, folderOne);
         assertEquals(1, folderOne.getItems().size());
         assertTrue(folderOne.getItemByName("newFile") instanceof MyFile);
     }
@@ -38,29 +38,29 @@ public class HandleCommandTest {
     @Test
     public void testHandleList() {
         String itemName = "ls";
-        HandleCommand.handleCommand(itemName, folderOne);
+        HandleCommand.handleCommand(itemName, folderOne, folderOne);
         assertEquals(0, folderOne.getItems().size());
         folderOne.add(fileOne);
         folderOne.add(fileTwo);
-        HandleCommand.handleCommand(itemName, folderOne);
+        HandleCommand.handleCommand(itemName, folderOne, folderOne);
         assertEquals(2, folderOne.getItems().size());
     }
 
     @Test
     public void testHandleChangeDirectory() {
         String itemName = "cd newFolder";
-        HandleCommand.handleCommand(itemName, folderOne);
+        HandleCommand.handleCommand(itemName, folderOne, folderOne);
         assertEquals(0, folderOne.getItems().size());
 
         itemName = "cd MyFile One";
-        HandleCommand.handleCommand(itemName, folderOne);
+        HandleCommand.handleCommand(itemName, folderOne, folderOne);
         assertEquals(0, folderOne.getItems().size());
 
         itemName = "cd folderTwo";
         folderTwo.add(fileOne);
         folderTwo.add(fileTwo);
         folderOne.add(folderTwo);
-        HandleCommand.handleCommand(itemName, folderOne);
+        HandleCommand.handleCommand(itemName, folderOne, folderOne);
         assertEquals(2, folderTwo.getItems().size());
         assertEquals(fileOne, folderTwo.getItemByName("MyFile One"));
         assertEquals(fileTwo, folderTwo.getItemByName("MyFile Two"));
@@ -69,23 +69,31 @@ public class HandleCommandTest {
     @Test
     public void testHandleRemove() {
         String itemName = "rm newFolder";
-        HandleCommand.handleCommand(itemName, folderOne);
+        HandleCommand.handleCommand(itemName, folderOne, folderOne);
         assertEquals(0, folderOne.getItems().size());
 
         folderOne.add(fileOne);
         itemName = "rm MyFile One";
-        HandleCommand.handleCommand(itemName, folderOne);
+        HandleCommand.handleCommand(itemName, folderOne, folderOne);
         assertEquals(0, folderOne.getItems().size());
 
         itemName = "rm folderTwo";
         folderOne.add(fileOne);
         folderOne.add(fileTwo);
         folderOne.add(folderTwo);
-        HandleCommand.handleCommand(itemName, folderOne);
+        HandleCommand.handleCommand(itemName, folderOne, folderOne);
         assertEquals(2, folderOne.getItems().size());
     }
 
+    @Test
+    public void handlePrintAllTest() {
+        String itemName = "printAll";
+        HandleCommand.handleCommand(itemName, folderOne, folderOne);
+        assertEquals(0, folderOne.getItems().size());
 
-
-
+        folderOne.add(fileOne);
+        folderOne.add(fileTwo);
+        HandleCommand.handleCommand(itemName, folderOne, folderOne);
+        assertEquals(2, folderOne.getItems().size());
+    }
 }

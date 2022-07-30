@@ -69,16 +69,14 @@ class FolderTest {
 
     @Test
     void changeDirectory() {
-        folderOne.changeDirectory("I don't exist");
-        folderOne.changeDirectory("Folder Two");
+        folderOne.changeDirectory("I don't exist", folderOne);
+        folderOne.changeDirectory("Folder Two", folderOne);
         assertEquals(0, folderOne.getItems().size());
         assertEquals("Folder One", folderOne.getName());
         folderOne.add(folderTwo);
-        folderOne.changeDirectory("Folder Two");
-        assertEquals("Folder Two", folderOne.getName());
-        assertEquals(0, folderOne.getItems().size());
-        assertEquals(folderTwo.getItems(), folderOne.getItems());
-
+        folderOne.changeDirectory("Folder Two", folderOne);
+        assertEquals("Folder Two", folderTwo.getName());
+        assertEquals(0, folderTwo.getItems().size());
     }
 
     @Test
@@ -95,6 +93,12 @@ class FolderTest {
         folderOne.add(fileTwo);
         assertTrue(folderOne.doesNotContainItem("File Million"));
         assertFalse(folderOne.doesNotContainItem("File One"));
+    }
+
+    @Test
+    void testCloneDirectory() {
+        assertFalse(folderOne.equals(Folder.cloneDirectory(folderOne)));
+        assertFalse(Folder.cloneDirectory(folderOne).equals(Folder.cloneDirectory(folderOne)));
     }
 
 }

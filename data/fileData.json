@@ -1,0 +1,29 @@
+{
+  "name":"root",
+  "items":[
+    {
+      "name":"f1",
+      "content":"SOME CONTENT",
+      "type":"file"
+    },
+    {
+      "name":"f2",
+      "content":"SOME CONTENT AGAIN",
+      "type":"file"
+    },
+    {
+      "name":"f3",
+      "items":[
+        {
+          "name":"f4",
+          "items":[
+
+          ],
+          "type":"folder"
+        }
+      ],
+      "type":"folder"
+    }
+  ],
+  "type":"folder"
+}

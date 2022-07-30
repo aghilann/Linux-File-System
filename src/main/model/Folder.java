@@ -2,6 +2,7 @@ package model;
 
 import ui.App;
 
+
 import java.util.ArrayList;
 
 
@@ -82,26 +83,41 @@ public class Folder implements FolderItemInterface {
     // REQUIRES: name is in this folder
     // MODIFIES: this
     // EFFECTS: changes the current folder the user is on
-    public void changeDirectory(String name) {
+    public Folder changeDirectory(String name, Folder currentDirectory) {
+        boolean isInFolder = false;
         for (FolderItemInterface item : this.items) {
             if (item.getName().equals(name)) {
                 if (item instanceof Folder) {
-                    changeAllFields((Folder) item);
+                    currentDirectory = cloneDirectory((Folder) item);
+                    isInFolder = true;
                     App.printGivenString("Changed directory to " + item.getName());
                 } else {
+                    isInFolder = true;
                     App.printGivenString("Cannot change directory to a file");
                 }
-                return;
             }
         }
-        App.printGivenString("Item does not exist in this folder");
+        if (!isInFolder) {
+            App.printGivenString("Item does not exist in this folder");
+        }
+        return currentDirectory;
     }
 
-    // MODIFIES: this
-    // EFFECTS: changes all the fields of this folder to the given folder
-    private void changeAllFields(Folder item) {
-        this.name = item.name;
-        this.items = item.items;
+    public static Folder cloneDirectory(Folder folder) {
+        Folder newFolder = new Folder(folder.name);
+        for (FolderItemInterface item : folder.items) {
+            if (item instanceof Folder) {
+                newFolder.items.add(cloneDirectory((Folder) item));
+            } else {
+                newFolder.items.add(item);
+            }
+        }
+        return newFolder;
     }
 
+    public void save(Folder root) {
+    }
+
+    public void writeToFile(Folder root) {
+    }
 }
