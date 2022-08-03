@@ -2,6 +2,7 @@ package ui.components;
 
 import model.Folder;
 import model.FolderItemInterface;
+import ui.App;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,11 +11,13 @@ public class MainPanel extends JPanel {
     Folder root;
     Folder currentDirectory;
     MyFrame frame;
+    App app;
 
-    public MainPanel(Folder root, Folder currentDirectory, MyFrame frame) {
+    public MainPanel(Folder root, Folder currentDirectory, MyFrame frame, App app) {
         this.root = currentDirectory;
         this.currentDirectory = currentDirectory;
         this.frame = frame;
+        this.app = app;
         setLayout(new GridLayout(4, 4));
         setBorder(BorderFactory.createLineBorder(Color.RED));
         addAllItems();
@@ -28,7 +31,7 @@ public class MainPanel extends JPanel {
         }
 
         for (FolderItemInterface item : currentDirectory.getItems()) {
-            add(new Item(item.getName(), item, currentDirectory, this));
+            add(new Item(item.getName(), item, currentDirectory, this, app));
         }
     }
 

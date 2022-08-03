@@ -13,7 +13,6 @@ import ui.components.MyFrame;
 public class App {
     Folder currentDirectory = new Folder("root");
     Folder root;
-    boolean isRunning = true;
     Scanner terminal = new Scanner(System.in);
     private static final String JSON_STORE = "./data/FileSystem.json";
     private final JsonReader jsonReader;
@@ -25,25 +24,7 @@ public class App {
         jsonReader = new JsonReader(JSON_STORE);
         jsonWriter = new JsonWriter(JSON_STORE);
         shouldLoad(1); // TODO: Move the line and change from 1
-        new MyFrame(this.root, currentDirectory);
-    }
-
-    // MODIFIES: this
-    // EFFECTS: runs the program
-    private void runApplication() {
-        System.out.println("Welcome to Aghilan's File system!");
-        Folder unchangedRoot = Folder.cloneDirectory(root);
-        while (isRunning) {
-            String command = terminal.nextLine();
-            if (command.startsWith("exit")) {
-                isRunning = false;
-            } else if (command.startsWith("save")) {
-                saveFolder();
-            } else if (!command.equals("")) {
-                HandleCommand.handleCommand(command, currentDirectory, root);
-            }
-
-        }
+        new MyFrame(this.root, currentDirectory, this);
     }
 
     // EFFECTS: prints the given string to the console
@@ -72,14 +53,18 @@ public class App {
     }
 
     // EFFECTS: saves the current folder to file
-    private void saveFolder() {
+    public void saveFolder() {
         try {
             jsonWriter.open();
-            jsonWriter.write(currentDirectory);
+            jsonWriter.write(root);
             jsonWriter.close();
-            System.out.println("Saved " + currentDirectory.getName() + " to " + JSON_STORE);
+            System.out.println("Saved " + root.getName() + " to " + JSON_STORE);
         } catch (IOException e) {
             System.out.println("Unable to write to file: " + JSON_STORE);
         }
+    }
+
+    public void setCurrentDirectory(Folder currentDirectory) {
+        this.currentDirectory = currentDirectory;
     }
 }

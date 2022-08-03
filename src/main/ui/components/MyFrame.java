@@ -1,6 +1,7 @@
 package ui.components;
 
 import model.Folder;
+import ui.App;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,25 +11,26 @@ public class MyFrame extends JFrame {
     Folder currentDirectory;
     MainPanel mainPanel;
     AddItem createFolderPanel;
+    SaveFolder saveFolderPanel;
+    App app;
 
-    public MyFrame(Folder root, Folder currentDirectory) {
+    public MyFrame(Folder root, Folder currentDirectory, App app) {
         super("Aghilan's File System");
+        setLayout(new GridLayout(4, 4));
         this.currentDirectory = currentDirectory;
         this.root = root;
-        setLayout(new GridLayout(4, 4));
-        this.mainPanel = new MainPanel(root, currentDirectory, this);
+        this.app = app;
+        this.mainPanel = new MainPanel(root, currentDirectory, this, app);
         this.createFolderPanel = new AddItem(this.currentDirectory, this.mainPanel);
+        this.saveFolderPanel = new SaveFolder(app);
         add(mainPanel);
         add(createFolderPanel);
+        add(saveFolderPanel);
         setVisible(true);
         pack();
     }
 
     public Folder getRoot() {
         return root;
-    }
-
-    public void setRoot(Folder root) {
-        this.root = root;
     }
 }

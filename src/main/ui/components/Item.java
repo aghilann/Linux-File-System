@@ -2,31 +2,34 @@ package ui.components;
 
 import model.Folder;
 import model.FolderItemInterface;
+import ui.App;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class Item extends JPanel {
-    private String name;
-    private FolderItemInterface item;
-    private JLabel UIName;
-    private Folder currentDirectory;
-    private MainPanel parentFrame;
+    private final String name;
+    private final FolderItemInterface item;
+    private final JLabel labelName;
+    private final Folder currentDirectory;
+    private final MainPanel parentFrame;
+    private final App app;
 
-    public Item(String name, FolderItemInterface item, Folder currentDirectory, MainPanel parentFrame) {
+    public Item(String name, FolderItemInterface item, Folder currentDirectory, MainPanel parentFrame, App app) {
         this.item = item;
         this.name = name;
-        this.UIName = new JLabel(name);
+        this.labelName = new JLabel(name);
         this.currentDirectory = currentDirectory;
         this.parentFrame = parentFrame;
+        this.app = app;
         configUIName();
         addButtons();
     }
 
     private void configUIName() {
-        UIName.setFont(new Font("Arial", Font.BOLD, 20));
-        UIName.setForeground(new java.awt.Color(0, 0, 0));
-        add(UIName);
+        labelName.setFont(new Font("Arial", Font.BOLD, 20));
+        labelName.setForeground(new java.awt.Color(0, 0, 0));
+        add(labelName);
     }
 
     private void addButtons() {
@@ -49,18 +52,12 @@ public class Item extends JPanel {
         add(button);
     }
 
-    private void decorate() {
-        setLayout(new BorderLayout());
-        add(UIName, BorderLayout.CENTER);
-        setPreferredSize(new Dimension(200, 50));
-        setBorder(BorderFactory.createLineBorder(Color.BLACK));
-    }
-
     private void handleChangeDirectory(JButton button) {
         Folder folder = (Folder) item;
         System.out.println("Opening folder: " + folder.getName() + " from " + currentDirectory.getName());
         Folder newFolder = folder.changeDirectory(name, currentDirectory);
         System.out.println("New folder: " + currentDirectory.getName());
+        app.setCurrentDirectory(newFolder);
         parentFrame.changeDirectory(newFolder);
         System.out.println("Updated UI");
     }

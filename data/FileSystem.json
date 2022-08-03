@@ -1,44 +1,27 @@
 {
-    "name": "root",
-    "type": "folder",
-    "items": [
+  "name": "root",
+  "type": "folder",
+  "items": [
+    {
+      "name": "folderOne",
+      "type": "folder",
+      "items": [
         {
-            "name": "File One",
-            "type": "file",
-            "content": "SOME CONTENT"
+          "name": "fileOne",
+          "type": "file",
+          "content": "contentOne"
         },
         {
-            "name": "File Two",
-            "type": "file",
-            "content": "SOME CONTENT AGAIN"
-        },
-        {
-            "name": "Folder Two",
-            "type": "folder",
-            "items": [{
-                "name": "Some Folder",
-                "type": "folder",
-                "items": []
-            },
-            {
-                "name": "Some Other Folder",
-                "type": "file",
-                "content": "SOME CONTENT"
-            }, {
-                "name": "Another One File",
-                "type": "file",
-                "content": "SOME CONTENT"
-            }]
-        },
-        {
-            "name": "Folder Three",
-            "type": "folder",
-            "items": []
-        },
-        {
-            "name": "Folder Five",
-            "type": "folder",
-            "items": []
+          "name": "fileTwo",
+          "type": "file",
+          "content": "contentTwo"
         }
-    ]
+      ]
+    },
+    {
+      "name": "folderTwo",
+      "type": "folder",
+      "items": []
+    }
+  ]
 }
