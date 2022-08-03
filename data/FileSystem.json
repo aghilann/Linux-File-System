@@ -3,31 +3,40 @@
     "type": "folder",
     "items": [
         {
-            "name": "f1",
+            "name": "File One",
             "type": "file",
             "content": "SOME CONTENT"
         },
         {
-            "name": "f2",
+            "name": "File Two",
             "type": "file",
             "content": "SOME CONTENT AGAIN"
         },
         {
-            "name": "f3",
+            "name": "Folder Two",
             "type": "folder",
             "items": [{
-                "name": "f4",
+                "name": "Some Folder",
                 "type": "folder",
                 "items": []
+            },
+            {
+                "name": "Some Other Folder",
+                "type": "file",
+                "content": "SOME CONTENT"
+            }, {
+                "name": "Another One File",
+                "type": "file",
+                "content": "SOME CONTENT"
             }]
         },
         {
-            "name": "f4",
+            "name": "Folder Three",
             "type": "folder",
             "items": []
         },
         {
-            "name": "f5",
+            "name": "Folder Five",
             "type": "folder",
             "items": []
         }

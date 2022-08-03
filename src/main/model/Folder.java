@@ -86,23 +86,13 @@ public class Folder implements FolderItemInterface {
     // MODIFIES: this
     // EFFECTS: changes the current folder the user is on
     public Folder changeDirectory(String name, Folder currentDirectory) {
-        boolean isInFolder = false;
-        for (FolderItemInterface item : this.items) {
-            if (item.getName().equals(name)) {
-                if (item instanceof Folder) {
-                    currentDirectory = cloneDirectory((Folder) item);
-                    isInFolder = true;
-                    App.printGivenString("Changed directory to " + item.getName());
-                } else {
-                    isInFolder = true;
-                    App.printGivenString("Cannot change directory to a file");
-                }
-            }
+        System.out.println(name.equals(currentDirectory.getItemByName(name).getName()));
+        if (name.equals(currentDirectory.getItemByName(name).getName())) {
+            System.out.println("I will return the new directory");
+            return (Folder) currentDirectory.getItemByName(name);
+        } else {
+            throw new IllegalArgumentException("Folder does not exist");
         }
-        if (!isInFolder) {
-            App.printGivenString("Item does not exist in this folder");
-        }
-        return currentDirectory;
     }
 
     // EFFECTS: creates a clone of the directory and it's children
@@ -144,6 +134,10 @@ public class Folder implements FolderItemInterface {
 
         return jsonArray;
     }
+
+//    public void setItems(ArrayList<FolderItemInterface> items) {
+//        this.items = items;
+//    }
 
 }
 

@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.Scanner;
 import persistence.JsonReader;
 import persistence.JsonWriter;
+import ui.components.MyFrame;
 
 // Runs program on initialization and contains methods to output to console
 public class App {
@@ -20,16 +21,11 @@ public class App {
 
     // EFFECTS: constructs a new App
     public App() {
+        this.root = currentDirectory;
         jsonReader = new JsonReader(JSON_STORE);
         jsonWriter = new JsonWriter(JSON_STORE);
-        // Ask the user if they would like to start from a saved state or start from scratch
-        System.out.println("Would you like to start from a saved state or start from scratch?");
-        System.out.println("1. Start from saved state");
-        System.out.println("2. Start from scratch");
-        int choice = terminal.nextInt();
-        shouldLoad(choice);
-        root = currentDirectory;
-        runApplication();
+        shouldLoad(1); // TODO: Move the line and change from 1
+        new MyFrame(this.root, currentDirectory);
     }
 
     // MODIFIES: this
@@ -59,6 +55,7 @@ public class App {
     // EFFECTS: loads workroom from file
     private void loadFolder() {
         try {
+            System.out.println("Loading workroom from file...");
             currentDirectory = jsonReader.read();
             System.out.println("Loaded " + currentDirectory.getName() + " from " + JSON_STORE);
         } catch (IOException e) {

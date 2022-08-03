@@ -10,7 +10,6 @@ public class HandleCommand {
     // MODIFIES: currentDirectory
     // EFFECTS: performs the operation given in the command
     public static void handleCommand(String command, Folder currentDirectory, Folder root) {
-
         if (command.startsWith("mkdir")) {
             handleMakeDirectory(command, currentDirectory);
         } else if  (command.startsWith("touch")) {
