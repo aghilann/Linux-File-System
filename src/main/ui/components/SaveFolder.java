@@ -21,7 +21,6 @@ public class SaveFolder extends JPanel implements MouseListener {
     }
 
     public void decorateButton() {
-        // make the Button large and green
         saveButton.setBackground(Color.GREEN);
         saveButton.setForeground(Color.BLACK);
         saveButton.setFont(new Font("Arial", Font.BOLD, 20));

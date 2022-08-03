@@ -9,15 +9,13 @@ import java.awt.*;
 import java.io.File;
 
 public class AddItem extends JPanel {
-    private final TextField name;
-    private final JButton createButton;
-    private final Folder currentDirectory;
-    private final MainPanel parentFrame;
-    private final JCheckBox isFolder;
+    private TextField name;
+    private JButton createButton;
+    private MainPanel parentFrame;
+    private JCheckBox isFolder;
 
-    public AddItem(Folder currentDirectory, MainPanel parentFrame) {
+    public AddItem(MainPanel parentFrame) {
         this.parentFrame = parentFrame;
-        this.currentDirectory = currentDirectory;
         name = new TextField();
         createButton = new JButton("Create");
         isFolder = new JCheckBox("Create Folder (y/n)");
@@ -37,11 +35,11 @@ public class AddItem extends JPanel {
 
     private void handleCreate() {
         String name = this.name.getText();
-        if (currentDirectory.doesNotContainItem(name)) {
+        if (parentFrame.getCurrentDirectory().doesNotContainItem(name)) {
             if (isFolder.isEnabled()) {
-                currentDirectory.add(new Folder(name));
+                parentFrame.getCurrentDirectory().add(new Folder(name));
             } else {
-                currentDirectory.add(new MyFile(name, ""));
+                parentFrame.getCurrentDirectory().add(new MyFile(name, ""));
             }
             System.out.println("Created " + name);
         } else {

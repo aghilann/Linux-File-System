@@ -21,7 +21,7 @@ public class MyFrame extends JFrame {
         this.root = root;
         this.app = app;
         this.mainPanel = new MainPanel(root, currentDirectory, this, app);
-        this.createFolderPanel = new AddItem(this.currentDirectory, this.mainPanel);
+        this.createFolderPanel = new AddItem(this.mainPanel);
         this.saveFolderPanel = new SaveFolder(app);
         add(mainPanel);
         add(createFolderPanel);

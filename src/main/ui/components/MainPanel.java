@@ -51,4 +51,7 @@ public class MainPanel extends JPanel {
         repaint();
     }
 
+    public Folder getCurrentDirectory() {
+        return currentDirectory;
+    }
 }

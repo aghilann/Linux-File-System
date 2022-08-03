@@ -1,27 +1,30 @@
 {
-  "name": "root",
-  "type": "folder",
-  "items": [
-    {
-      "name": "folderOne",
-      "type": "folder",
-      "items": [
+    "name": "root",
+    "type": "folder",
+    "items": [
         {
-          "name": "fileOne",
-          "type": "file",
-          "content": "contentOne"
+            "name": "folderOne",
+            "type": "folder",
+            "items": [{
+                "name": "fileOne",
+                "type": "file",
+                "content": "contentOne"
+            }]
         },
         {
-          "name": "fileTwo",
-          "type": "file",
-          "content": "contentTwo"
+            "name": "folderTwo",
+            "type": "folder",
+            "items": []
+        },
+        {
+            "name": "Hello World",
+            "type": "folder",
+            "items": []
+        },
+        {
+            "name": "Hello World In Folder Two",
+            "type": "folder",
+            "items": []
         }
-      ]
-    },
-    {
-      "name": "folderTwo",
-      "type": "folder",
-      "items": []
-    }
-  ]
+    ]
 }

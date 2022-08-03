@@ -1,0 +1,51 @@
+Index: data/FileSystem.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>{\r\n    \"name\": \"root\",\r\n    \"type\": \"folder\",\r\n    \"items\": [\r\n        {\r\n            \"name\": \"f1\",\r\n            \"type\": \"file\",\r\n            \"content\": \"SOME CONTENT\"\r\n        },\r\n        {\r\n            \"name\": \"f2\",\r\n            \"type\": \"file\",\r\n            \"content\": \"SOME CONTENT AGAIN\"\r\n        },\r\n        {\r\n            \"name\": \"f3\",\r\n            \"type\": \"folder\",\r\n            \"items\": [{\r\n                \"name\": \"f4\",\r\n                \"type\": \"folder\",\r\n                \"items\": []\r\n            }]\r\n        },\r\n        {\r\n            \"name\": \"f4\",\r\n            \"type\": \"folder\",\r\n            \"items\": []\r\n        },\r\n        {\r\n            \"name\": \"f5\",\r\n            \"type\": \"folder\",\r\n            \"items\": []\r\n        }\r\n    ]\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/data/FileSystem.json b/data/FileSystem.json
+--- a/data/FileSystem.json	
++++ b/data/FileSystem.json	
+@@ -3,33 +3,14 @@
+     "type": "folder",
+     "items": [
+         {
+-            "name": "f1",
+-            "type": "file",
+-            "content": "SOME CONTENT"
+-        },
+-        {
+-            "name": "f2",
+-            "type": "file",
+-            "content": "SOME CONTENT AGAIN"
+-        },
+-        {
+-            "name": "f3",
+-            "type": "folder",
+-            "items": [{
+-                "name": "f4",
+-                "type": "folder",
+-                "items": []
+-            }]
+-        },
+-        {
+-            "name": "f4",
+-            "type": "folder",
+-            "items": []
+-        },
+-        {
+-            "name": "f5",
++            "name": "Folder One",
+             "type": "folder",
+             "items": []
++        },
++        {
++            "name": "index",
++            "type": "file",
++            "content": ""
+         }
+     ]
+ }
+\ No newline at end of file

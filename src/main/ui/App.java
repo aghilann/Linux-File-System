@@ -20,11 +20,11 @@ public class App {
 
     // EFFECTS: constructs a new App
     public App() {
-        this.root = currentDirectory;
         jsonReader = new JsonReader(JSON_STORE);
         jsonWriter = new JsonWriter(JSON_STORE);
         shouldLoad(1); // TODO: Move the line and change from 1
         new MyFrame(this.root, currentDirectory, this);
+        this.root = currentDirectory;
     }
 
     // EFFECTS: prints the given string to the console
