@@ -24,7 +24,9 @@ public class HandleCommandTest {
         HandleCommand.handleCommand(itemName, folderOne, folderOne);
         assertEquals(1, folderOne.getItems().size());
         assertTrue(folderOne.getItemByName("newFolder") instanceof Folder);
-
+        HandleCommand.handleCommand(itemName, folderOne, folderOne);
+        assertEquals(1, folderOne.getItems().size());
+        assertTrue(folderOne.getItemByName("newFolder") instanceof Folder);
     }
 
     @Test

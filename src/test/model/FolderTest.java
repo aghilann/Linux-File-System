@@ -40,8 +40,8 @@ class FolderTest {
 
     @Test
     void testGetItems() {
-        folderOne.add(fileOne);
-        folderOne.add(fileTwo);
+        assertTrue(folderOne.add(fileOne));
+        assertTrue(folderOne.add(fileTwo));
         assertFalse(folderOne.add(fileOne));
         assertEquals(2, folderOne.getItems().size());
     }
