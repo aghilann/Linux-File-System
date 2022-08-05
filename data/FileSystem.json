@@ -1,5 +1,5 @@
 {
-    "name": "root",
+    "name": "Wassup Root",
     "type": "folder",
     "items": [
         {
@@ -22,7 +22,7 @@
             "items": []
         },
         {
-            "name": "Hello World In Folder Two",
+            "name": "In the main Stuff",
             "type": "folder",
             "items": []
         }

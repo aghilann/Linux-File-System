@@ -86,12 +86,11 @@ public class Folder implements FolderItemInterface {
     // MODIFIES: this
     // EFFECTS: changes the current folder the user is on
     public Folder changeDirectory(String name, Folder currentDirectory) {
-        System.out.println(name.equals(currentDirectory.getItemByName(name).getName()));
-        if (name.equals(currentDirectory.getItemByName(name).getName())) {
+        if (currentDirectory.getItemByName(name) instanceof Folder) {
             System.out.println("I will return the new directory");
             return (Folder) currentDirectory.getItemByName(name);
         } else {
-            throw new IllegalArgumentException("Folder does not exist");
+            return null;
         }
     }
 

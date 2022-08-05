@@ -27,7 +27,7 @@ this project difficult to implement and it will teach me a lot aboout Object Ori
 - As a user, I want to be able to load my file system at the beginning or start from scratch.
 
 
-## Instructions to use Application
+## Instructions to use Application - Phase 2
 - Assumes basic knowledge of file system and it's command
 - "cd <FolderName>" changes your directory to the directory with the given name if it exists
 - "ls" just prints the names of all the folders/files in the current directory
@@ -36,3 +36,14 @@ this project difficult to implement and it will teach me a lot aboout Object Ori
 - "touch <FileName> creates a file with given name if it doesnt already exist"
 - Select 1 at the beginning of the program to load a file system or 2 to create a new file system
 - Write "save" at any moment to write the current file system to the saved file system
+
+## Instructions for Grader - Phase 3
+
+ - You can press load at any time to load a saved file system
+ - You can press save at any time to save the current file system
+ - You can view the files and folders in your current directory
+ - You can press open to "cd" into a folder
+ - You can press remove to delete a file or folder (and all of its contents)
+   - You must press save if you want this change to persist
+ - You can add files/folders to your current directory
+ - To find the images used in the project, go to static folder. (They are file/folder icons)

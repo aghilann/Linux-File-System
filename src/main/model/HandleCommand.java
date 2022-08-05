@@ -78,5 +78,4 @@ public class HandleCommand {
             App.printGivenString("Folder already exists");
         }
     }
-
 }

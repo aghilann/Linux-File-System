@@ -1,6 +1,5 @@
 package ui.components;
 
-import model.Folder;
 import ui.App;
 
 import javax.swing.*;
@@ -8,10 +7,13 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+// Button to save the current folder
 public class SaveFolder extends JPanel implements MouseListener {
     JButton saveButton;
     App app;
 
+    // REQUIRES: app != null
+    // EFFECTS: constructs a SaveFolder object
     public SaveFolder(App app) {
         this.app = app;
         saveButton = new JButton("Save");
@@ -20,6 +22,8 @@ public class SaveFolder extends JPanel implements MouseListener {
         add(saveButton);
     }
 
+    // REQUIRES: saveButton != null
+    // EFFECTS: decorates the save button
     public void decorateButton() {
         saveButton.setBackground(Color.GREEN);
         saveButton.setForeground(Color.BLACK);
@@ -27,6 +31,9 @@ public class SaveFolder extends JPanel implements MouseListener {
         saveButton.setPreferredSize(new Dimension(200, 50));
     }
 
+    // REQUIRES: app != null
+    // MODIFIES: this, app
+    // EFFECTS: saves the current directory
     @Override
     public void mouseClicked(MouseEvent e) {
         app.saveFolder();

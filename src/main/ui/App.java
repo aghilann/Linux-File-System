@@ -17,13 +17,13 @@ public class App {
     private static final String JSON_STORE = "./data/FileSystem.json";
     private final JsonReader jsonReader;
     private final JsonWriter jsonWriter;
+    private final MyFrame myFrame;
 
     // EFFECTS: constructs a new App
     public App() {
         jsonReader = new JsonReader(JSON_STORE);
         jsonWriter = new JsonWriter(JSON_STORE);
-        shouldLoad(1); // TODO: Move the line and change from 1
-        new MyFrame(this.root, currentDirectory, this);
+        myFrame = new MyFrame(this.root, currentDirectory, this);
         this.root = currentDirectory;
     }
 
@@ -34,21 +34,14 @@ public class App {
 
     // MODIFIES: this
     // EFFECTS: loads workroom from file
-    private void loadFolder() {
+    public void loadFolder() {
         try {
             System.out.println("Loading workroom from file...");
             currentDirectory = jsonReader.read();
+            setCurrentDirectoryAll(currentDirectory);
             System.out.println("Loaded " + currentDirectory.getName() + " from " + JSON_STORE);
         } catch (IOException e) {
             System.out.println("Unable to read from file: " + JSON_STORE);
-        }
-    }
-
-    // MODIFIES: this
-    // EFFECTS: determines if the user wants to start from a saved state or start from scratch
-    private void shouldLoad(int choice) {
-        if (choice == 1) {
-            loadFolder();
         }
     }
 
@@ -64,7 +57,23 @@ public class App {
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS: sets the current directory to the given folder
     public void setCurrentDirectory(Folder currentDirectory) {
         this.currentDirectory = currentDirectory;
+    }
+
+    // EFFECTS: gets the current directory
+    public Folder getCurrentDirectory() {
+        return currentDirectory;
+    }
+
+    // MODIFIES: this, everything
+    // EFFECTS: sets the current directory to the given folder and for all its children
+    public void setCurrentDirectoryAll(Folder currentDirectory) {
+        this.currentDirectory = currentDirectory;
+        myFrame.setCurrentDirectory(currentDirectory);
+        myFrame.getMainPanel().setCurrentDirectory(currentDirectory);
+        myFrame.getMainPanel().rerenderUI();
     }
 }
