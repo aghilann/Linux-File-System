@@ -42,6 +42,7 @@ class FolderTest {
     void testGetItems() {
         folderOne.add(fileOne);
         folderOne.add(fileTwo);
+        assertFalse(folderOne.add(fileOne));
         assertEquals(2, folderOne.getItems().size());
     }
 
@@ -110,6 +111,19 @@ class FolderTest {
         assertNotEquals(Folder.cloneDirectory(folderOne), Folder.cloneDirectory(folderOne));
         assertEquals(folderOne.getName(), Folder.cloneDirectory(folderOne).getName());
         assertEquals(folderOne.getItems().size(), Folder.cloneDirectory(folderOne).getItems().size());
+
+        // Test to see if the children are cloned as well.
+        folderOne.add(folderTwo);
+        folderOne.add(fileOne);
+        folderOne.add(fileTwo);
+        assertNotEquals(folderOne, Folder.cloneDirectory(folderOne));
+        assertNotEquals(Folder.cloneDirectory(folderOne), Folder.cloneDirectory(folderOne));
+        assertEquals(folderOne.getName(), Folder.cloneDirectory(folderOne).getName());
+        assertEquals(folderOne.getItems().size(), Folder.cloneDirectory(folderOne).getItems().size());
+        Folder childOne = (Folder) Folder.cloneDirectory(folderOne).getItemByName("Folder Two");
+        assertEquals(folderTwo.getName(), childOne.getName());
+        assertEquals(folderTwo.getItems().size(), childOne.getItems().size());
+        assertEquals(fileOne.getName(), Folder.cloneDirectory(folderOne).getItemByName("File One").getName());
     }
 
     @Test

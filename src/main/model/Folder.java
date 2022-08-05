@@ -134,10 +134,6 @@ public class Folder implements FolderItemInterface {
         return jsonArray;
     }
 
-//    public void setItems(ArrayList<FolderItemInterface> items) {
-//        this.items = items;
-//    }
-
 }
 
 
