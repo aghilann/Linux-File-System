@@ -1,57 +1,83 @@
 {
-    "name": "root",
-    "type": "folder",
-    "items": [
+  "name": "root",
+  "type": "folder",
+  "items": [
+    {
+      "name": "Homework",
+      "type": "folder",
+      "items": [
         {
-            "name": "Homework",
-            "type": "folder",
-            "items": [
-                {
-                    "name": "Math",
-                    "type": "file",
-                    "content": "contentOne"
-                },
-                {
-                    "name": "CS",
-                    "type": "file",
-                    "content": "contentTwo"
-                },
-                {
-                    "name": "Economics",
-                    "type": "file",
-                    "content": "contentTwo"
-                }
-            ]
+          "name": "Math",
+          "type": "file",
+          "content": "contentOne"
         },
         {
-            "name": "Games",
-            "type": "folder",
-            "items": [{
-                "name": "Shooter Games",
-                "type": "folder",
-                "items": [
-                    {
-                        "name": "CSGO",
-                        "type": "file",
-                        "content": "contentOne"
-                    },
-                    {
-                        "name": "Valorant",
-                        "type": "file",
-                        "content": "contentTwo"
-                    },
-                    {
-                        "name": "GTA",
-                        "type": "file",
-                        "content": "contentTwo"
-                    },
-                    {
-                        "name": "Splitgate",
-                        "type": "file",
-                        "content": ""
-                    }
-                ]
-            }]
+          "name": "CS",
+          "type": "file",
+          "content": "contentTwo"
+        },
+        {
+          "name": "Economics",
+          "type": "file",
+          "content": "contentTwo"
+        },
+        {
+          "name": "Business ",
+          "type": "folder",
+          "items": [
+            {
+              "name": "Business Ethics",
+              "type": "file",
+              "content": ""
+            },
+            {
+              "name": "Business Writting",
+              "type": "file",
+              "content": ""
+            },
+            {
+              "name": "Basic Algebra",
+              "type": "file",
+              "content": ""
+            },
+            {
+              "name": "Fitting Shapes into Holes",
+              "type": "file",
+              "content": ""
+            }
+          ]
         }
-    ]
+      ]
+    },
+    {
+      "name": "Games",
+      "type": "folder",
+      "items": [{
+        "name": "Shooter Games",
+        "type": "folder",
+        "items": [
+          {
+            "name": "CSGO",
+            "type": "file",
+            "content": "contentOne"
+          },
+          {
+            "name": "Valorant",
+            "type": "file",
+            "content": "contentTwo"
+          },
+          {
+            "name": "GTA",
+            "type": "file",
+            "content": "contentTwo"
+          },
+          {
+            "name": "Splitgate",
+            "type": "file",
+            "content": ""
+          }
+        ]
+      }]
+    }
+  ]
 }

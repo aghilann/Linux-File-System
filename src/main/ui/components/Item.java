@@ -15,6 +15,7 @@ public class Item extends JPanel {
     private final Folder currentDirectory;
     private final MainPanel parentFrame;
     private final App app;
+
     // EFFECTS: constructs an Item with the given name, item, currentDirectory, parentFrame, and app
     public Item(String name, FolderItemInterface item, Folder currentDirectory, MainPanel parentFrame, App app) {
         this.item = item;
