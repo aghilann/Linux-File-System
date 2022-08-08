@@ -16,7 +16,6 @@ public class MyFrame extends JFrame {
     App app;
     LoadFiles loadFilesPanel;
 
-
     // REQUIRES: root is a valid Folder object
     // MODIFIES: this
     // EFFECTS: constructs a MyFrame object with root as the root folder and all the panels
@@ -38,7 +37,7 @@ public class MyFrame extends JFrame {
         pack();
     }
 
-    // EFFECTS: returns the current directory
+    // EFFECTS: returns the root folder
     public Folder getRoot() {
         return root;
     }

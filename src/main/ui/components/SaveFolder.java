@@ -37,7 +37,11 @@ public class SaveFolder extends JPanel implements MouseListener {
     @Override
     public void mouseClicked(MouseEvent e) {
         app.saveFolder();
-        JOptionPane.showMessageDialog(this, "Folder saved!");
+        ImageIcon icon = new ImageIcon("static/Save.png");
+        JOptionPane.showMessageDialog(this,
+                "Folder saved!",
+                "Save",
+                JOptionPane.INFORMATION_MESSAGE, icon);
     }
 
     @Override

@@ -23,7 +23,7 @@ public class App {
     public App() {
         jsonReader = new JsonReader(JSON_STORE);
         jsonWriter = new JsonWriter(JSON_STORE);
-        myFrame = new MyFrame(this.root, currentDirectory, this);
+        myFrame = new MyFrame(root, currentDirectory, this);
         this.root = currentDirectory;
     }
 
@@ -38,6 +38,7 @@ public class App {
         try {
             System.out.println("Loading workroom from file...");
             currentDirectory = jsonReader.read();
+            root = currentDirectory;
             setCurrentDirectoryAll(currentDirectory);
             System.out.println("Loaded " + currentDirectory.getName() + " from " + JSON_STORE);
         } catch (IOException e) {

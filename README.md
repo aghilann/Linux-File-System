@@ -47,3 +47,5 @@ this project difficult to implement and it will teach me a lot aboout Object Ori
    - You must press save if you want this change to persist
  - You can add files/folders to your current directory
  - To find the images used in the project, go to static folder. (They are file/folder icons)
+    - The graphics I used were a popup with a giant green checkmark image
+    - The file/folder also have icons which are just png images
