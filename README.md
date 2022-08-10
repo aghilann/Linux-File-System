@@ -65,3 +65,18 @@ this project difficult to implement and it will teach me a lot aboout Object Ori
     Wed Aug 10 12:33:58 PDT 2022
     Removed Business Ethics from Business
     ```
+
+## Phase 4: Task 3
+Currently, I pass down the current directory as an argument to all components I would instead use the Singleton 
+Design Pattern so that the current directory is only ever one object, 
+and I can reduce how much data I have to drill down the component hierarchy. It would act
+as a Single Source of Truth for the current directory.
+
+I would also use Observer Pattern to notify the components when a change occurs, so they can
+update themselves by accessing the current directory which is located in the Singleton.
+
+I would also create helper functions to do a lot of the initializing and setting up of the components
+in some Components which have many children like MyFrame.
+
+I would also try to remove a lot of the repeated code and abstract it into helper functions
+so it will be a lot easier to refactor if needed.

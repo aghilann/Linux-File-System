@@ -28,8 +28,7 @@ public class MyFrame extends JFrame {
         this.currentDirectory = currentDirectory;
         this.root = root;
         this.app = app;
-        this.mainPanel = new MainPanel(root, currentDirectory, this, app);
-        this.createFolderPanel = new AddItem(this.mainPanel);
+        setInitValues();
         this.saveFolderPanel = new SaveFolder(app);
         add(loadFilesPanel);
         add(mainPanel);
@@ -46,6 +45,11 @@ public class MyFrame extends JFrame {
         });
         setVisible(true);
         pack();
+    }
+
+    public void setInitValues() {
+        this.mainPanel = new MainPanel(root, currentDirectory, this, app);
+        this.createFolderPanel = new AddItem(this.mainPanel);
     }
 
     // EFFECTS: returns the root folder
