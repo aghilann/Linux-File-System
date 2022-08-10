@@ -46,7 +46,7 @@ public class Folder implements FolderItemInterface {
     public void remove(FolderItemInterface item) {
         this.items.remove(item);
         EventLog.getInstance().logEvent(
-                new Event("LOG: Removed " + item.getName() + " from " + this.name));
+                new Event("Removed " + item.getName() + " from " + this.name));
     }
 
     // REQUIRES: item is not an empty string
@@ -62,14 +62,13 @@ public class Folder implements FolderItemInterface {
         if (item instanceof Folder && doesNotContainItem(item.getName())) {
             Folder folderToAdd = (Folder) item;
             this.items.add(folderToAdd);
-            EventLog.getInstance().logEvent(new Event("LOG:"
-                    + " added " + folderToAdd.getName() + " to " + this.name));
+            EventLog.getInstance().logEvent(new Event("Added Folder " + folderToAdd.getName() + " to " + this.name));
             return true;
         } else if ((item instanceof MyFile) && doesNotContainItem(item.getName())) {
             MyFile fileToAdd = (MyFile) item;
             this.items.add(fileToAdd);
-            EventLog.getInstance().logEvent(new Event("LOG:"
-                    + " added " + fileToAdd.getName() + " to " + this.name));
+            EventLog.getInstance().logEvent(new Event(
+                    "Added File " + fileToAdd.getName() + " to " + this.name));
             return true;
         } else {
             App.printGivenString("Item already exists in this folder");

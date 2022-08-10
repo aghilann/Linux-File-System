@@ -49,3 +49,19 @@ this project difficult to implement and it will teach me a lot aboout Object Ori
  - To find the images used in the project, go to static folder. (They are file/folder icons)
     - The graphics I used were a popup with a giant green checkmark image
     - The file/folder also have icons which are just png images
+
+## Phase 4: Task 2
+- The Events are Logged when new Folders/Files are loaded/created
+  - ```
+    Wed Aug 10 12:30:10 PDT 2022
+    Added Folder Homework to root
+    Wed Aug 10 12:30:10 PDT 2022
+    Added File Math to Homework
+    ``` 
+- The Events are logged when Folders/Files are removed
+  - ```
+    Wed Aug 10 12:33:53 PDT 2022
+    Removed Math from Homework
+    Wed Aug 10 12:33:58 PDT 2022
+    Removed Business Ethics from Business
+    ```

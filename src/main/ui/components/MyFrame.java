@@ -35,7 +35,15 @@ public class MyFrame extends JFrame {
         add(mainPanel);
         add(createFolderPanel);
         add(saveFolderPanel);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                EventLog.getInstance().iterator().forEachRemaining(event -> {
+                    System.out.println(event.toString());
+                });
+                System.exit(0);
+            }
+        });
         setVisible(true);
         pack();
     }
@@ -66,7 +74,4 @@ public class MyFrame extends JFrame {
         return saveFolderPanel;
     }
 
-    public void onClose() {
-        EventLog.getInstance().iterator().forEachRemaining(Event -> System.out.println(Event.toString()));
-    }
 }
