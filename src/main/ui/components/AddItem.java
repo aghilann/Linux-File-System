@@ -49,7 +49,6 @@ public class AddItem extends JPanel {
             } else {
                 parentFrame.getCurrentDirectory().add(new MyFile(name, ""));
             }
-            System.out.println("Created " + name);
         } else {
             JOptionPane.showMessageDialog(this, "Item with name already exists");
         }

@@ -45,6 +45,8 @@ public class Folder implements FolderItemInterface {
     // EFFECTS: removes the item with the given name from this Folder
     public void remove(FolderItemInterface item) {
         this.items.remove(item);
+        EventLog.getInstance().logEvent(
+                new Event("LOG: Removed " + item.getName() + " from " + this.name));
     }
 
     // REQUIRES: item is not an empty string
@@ -60,10 +62,14 @@ public class Folder implements FolderItemInterface {
         if (item instanceof Folder && doesNotContainItem(item.getName())) {
             Folder folderToAdd = (Folder) item;
             this.items.add(folderToAdd);
+            EventLog.getInstance().logEvent(new Event("LOG:"
+                    + " added " + folderToAdd.getName() + " to " + this.name));
             return true;
         } else if ((item instanceof MyFile) && doesNotContainItem(item.getName())) {
             MyFile fileToAdd = (MyFile) item;
             this.items.add(fileToAdd);
+            EventLog.getInstance().logEvent(new Event("LOG:"
+                    + " added " + fileToAdd.getName() + " to " + this.name));
             return true;
         } else {
             App.printGivenString("Item already exists in this folder");
@@ -87,7 +93,6 @@ public class Folder implements FolderItemInterface {
     // EFFECTS: changes the current folder the user is on
     public Folder changeDirectory(String name, Folder currentDirectory) {
         if (currentDirectory.getItemByName(name) instanceof Folder) {
-            System.out.println("I will return the new directory");
             return (Folder) currentDirectory.getItemByName(name);
         } else {
             return null;

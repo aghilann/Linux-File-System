@@ -80,21 +80,16 @@ public class Item extends JPanel {
     // EFFECTS: handles the change directory button being clicked
     private void handleChangeDirectory(JButton button) {
         Folder folder = (Folder) item;
-        System.out.println("Opening folder: " + folder.getName() + " from " + currentDirectory.getName());
         Folder newFolder = folder.changeDirectory(name, currentDirectory);
-        System.out.println("New folder: " + currentDirectory.getName());
         app.setCurrentDirectory(newFolder);
         parentFrame.changeDirectory(newFolder);
-        System.out.println("Updated UI");
     }
 
     // REQUIRES: button is not null
     // MODIFIES: this
     // EFFECTS: handles the remove button being clicked
     private void handleRemove(JButton button) {
-        System.out.println("Removing item: " + item.getName() + " from " + currentDirectory.getName());
         currentDirectory.remove(currentDirectory.getItemByName(name));
         parentFrame.removeItem();
-        System.out.println("Updated UI");
     }
 }

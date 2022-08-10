@@ -32,7 +32,6 @@ public class MainPanel extends JPanel {
     // EFFECTS: adds all the items in the current directory to the panel
     public void addAllItems() {
         if (currentDirectory == null) {
-            System.out.println("Current directory is null");
             return;
         }
 

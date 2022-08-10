@@ -1,5 +1,7 @@
 package ui.components;
 
+import model.Event;
+import model.EventLog;
 import model.Folder;
 import ui.App;
 
@@ -33,6 +35,7 @@ public class MyFrame extends JFrame {
         add(mainPanel);
         add(createFolderPanel);
         add(saveFolderPanel);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
         pack();
     }
@@ -61,5 +64,9 @@ public class MyFrame extends JFrame {
     // EFFECTS: returns the saveFolderPanel
     public SaveFolder getSaveFolderPanel() {
         return saveFolderPanel;
+    }
+
+    public void onClose() {
+        EventLog.getInstance().iterator().forEachRemaining(Event -> System.out.println(Event.toString()));
     }
 }

@@ -13,7 +13,6 @@ public class LoadFiles extends JButton {
         super("Load Files");
         addActionListener(e -> {
             app.loadFolder();
-            System.out.println(app.getCurrentDirectory().getName());
         });
     }
 }
