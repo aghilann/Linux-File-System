@@ -22,6 +22,8 @@ public class EventTest {
     public void testEquals() {
         assertTrue(event1.equals(event1));
         assertFalse(event1.equals(event2));
+        assertFalse(event1.equals(null));
+        assertFalse(event1.equals(new Date()));
     }
 
     @Test
